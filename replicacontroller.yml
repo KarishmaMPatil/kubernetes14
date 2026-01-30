@@ -1,0 +1,21 @@
+apiVersion: v1  
+kind: ReplicationController
+metadata: 
+   name: rc 
+   labels:
+     app: rcapp      
+spec: 
+  replicas: 3 
+  selector:
+     app: podrc
+  template: 
+    metadata: 
+     name: rc-pod 
+     labels:
+         app: podrc  #tags     
+    spec: 
+        containers:
+          - name: nginx-container 
+            image: nginx
+            ports:
+              - containerPort: 80
